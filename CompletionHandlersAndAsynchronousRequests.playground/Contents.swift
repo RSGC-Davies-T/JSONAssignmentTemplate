@@ -31,9 +31,7 @@ class ViewController : UIViewController {
             print(json)
             
             // Now we can parse this...
-            print("")
-            print("Now, add your parsing code here...")
-            
+        
             // Now we can update the UI
             // (must be done asynchronously)
             dispatch_async(dispatch_get_main_queue()) {
@@ -166,7 +164,7 @@ class ViewController : UIViewController {
         
         // Add the button into the super view
         view.addSubview(getData)
-
+  
         /*
          * Layout all the interface elements
          */
