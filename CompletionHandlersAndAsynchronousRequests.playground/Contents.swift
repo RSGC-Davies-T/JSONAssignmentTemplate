@@ -31,11 +31,24 @@ class ViewController : UIViewController {
             print(json)
             
             // Now we can parse this...
-        
+            if let stationPlatforms = json as? [String : AnyObject] {
+                print("=========")
+                  print(stationPlatforms["stops"])
+                print("=========")
+//                if let vehicles = stationPlatforms["bpi"] as? [String: AnyObject] {
+//                    print(vehicles["routes"])
+//                } else {
+//                    print("could not kill the bannana man")
+//                }
+
+            } else {
+                print("could not kill the bannana man")
+            }
+
             // Now we can update the UI
             // (must be done asynchronously)
             dispatch_async(dispatch_get_main_queue()) {
-                self.jsonResult.text = "parsed JSON should go here"
+                self.jsonResult.text = "hey b0ss"
             }
             
         } catch let error as NSError {
