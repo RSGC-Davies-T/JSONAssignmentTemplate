@@ -23,7 +23,7 @@ class ViewController : UIViewController {
             // Source JSON is here:
             // http://www.learnswiftonline.com/Samples/subway.json
             //
-            let json = try NSJSONSerialization.JSONObjectWithData(theData, options: NSJSONReadingOptions.AllowFragments) as! AnyObject
+            let json = try NSJSONSerialization.JSONObjectWithData(theData, options: NSJSONReadingOptions.AllowFragments) as? AnyObject
             
             // Print retrieved JSON
             print("")
@@ -95,7 +95,7 @@ class ViewController : UIViewController {
         }
         
         // Define a URL to retrieve a JSON file from
-        let address : String = "http://www.learnswiftonline.com/Samples/subway.json"
+        let address : String = "https://myttc.ca/Bay_station.json"
         
         // Try to make a URL request object
         if let url = NSURL(string: address) {
