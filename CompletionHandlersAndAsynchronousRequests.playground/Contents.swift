@@ -35,14 +35,14 @@ class ViewController : UIViewController {
                 print("=========")
                   print(stationPlatforms["stops"])
                 print("=========")
-//                if let vehicles = stationPlatforms["bpi"] as? [String: AnyObject] {
+//                if let vehicles = stationPlatforms[] as? [String: AnyObject] {
 //                    print(vehicles["routes"])
 //                } else {
-//                    print("could not kill the bannana man")
+//                    print("Can't parse individual routes")
 //                }
 
             } else {
-                print("could not kill the bannana man")
+                print("Can't parse individual platforms")
             }
 
             // Now we can update the UI
