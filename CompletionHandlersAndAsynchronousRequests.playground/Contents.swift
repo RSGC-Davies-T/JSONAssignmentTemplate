@@ -2,12 +2,12 @@
 
 import UIKit
 import XCPlayground
-
+print("test1")
 class ViewController : UIViewController {
-    
+   
     // Views that need to be accessible to all methods
     let jsonResult = UILabel()
-    
+  
     // If data is successfully retrieved from the server, we can parse it here
     func parseMyJSON(theData : NSData) {
         
@@ -49,7 +49,7 @@ class ViewController : UIViewController {
     
     // Set up and begin an asynchronous request for JSON data
     func getMyJSON() {
-
+        print("test2")
         // Define a completion handler
         // The completion handler is what gets called when this **asynchronous** network request is completed.
         // This is where we'd process the JSON retrieved
@@ -69,8 +69,8 @@ class ViewController : UIViewController {
                 
                 // If the request was successful, parse the given data
                 if r.statusCode == 200 {
-        
-                    // Show debug information (if a request was completed successfully)            
+                    
+                    // Show debug information (if a request was completed successfully)
                     print("")
                     print("====== data from the request follows ======")
                     print(data)
@@ -80,7 +80,7 @@ class ViewController : UIViewController {
                     print("")
                     print("====== errors from the request follows ======")
                     print(error)
-            
+                    
                     if let d = data {
                         
                         // Parse the retrieved data
@@ -120,11 +120,9 @@ class ViewController : UIViewController {
             
             // The NSURL object could not be created
             print("Error: Cannot create the NSURL object.")
-            
         }
-        
     }
-    
+
     // This is the method that will run as soon as the view controller is created
     override func viewDidLoad() {
         
