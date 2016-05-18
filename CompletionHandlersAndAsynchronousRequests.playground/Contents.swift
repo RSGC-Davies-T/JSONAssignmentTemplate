@@ -9,6 +9,7 @@ class ViewController : UIViewController {
     let jsonResult = UILabel()
     var platformCount = 0
     var currentPlatform = 0
+    var emptyChecker = 0
     // If data is successfully retrieved from the server, we can parse it here
     func parseMyJSON(theData : NSData) {
         
@@ -40,7 +41,8 @@ class ViewController : UIViewController {
                 print(stationPlatforms["stops"]![currentPlatform])
                 print("=========")
                 if let vehicles = stationPlatforms["stops"]![currentPlatform] as? [String: AnyObject] {
-                    if vehicles["routes"] != nil {
+                     emptyChecker = vehicles["routes"]!.count
+                    if emptyChecker != 0 {
                     print("--------")
                     print(vehicles["routes"])
                     print("--------")
