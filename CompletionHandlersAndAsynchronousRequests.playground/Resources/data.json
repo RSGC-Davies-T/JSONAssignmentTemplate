@@ -1,0 +1,113 @@
+{
+    "time":1463597414,
+    "stops":[
+             {
+             "routes":[
+             
+             ],
+             "agency":"Toronto Transit Commission",
+             "uri":"bay_station_bay_east_entrance",
+             "name":"Bay Station Bay East Entrance"
+             },
+             {
+             "routes":[
+             
+             ],
+             "agency":"Toronto Transit Commission",
+             "uri":"bay_station_bay_west_entrance",
+             "name":"Bay Station Bay West Entrance"
+             },
+             {
+             "routes":[
+             
+             ],
+             "agency":"Toronto Transit Commission",
+             "uri":"bay_station_bel_air_entrance",
+             "name":"Bay Station Bel Air Entrance"
+             },
+             {
+             "routes":[
+             
+             ],
+             "agency":"Toronto Transit Commission",
+             "uri":"bay_station_bloor_west_entrance",
+             "name":"Bay Station Bloor West Entrance"
+             },
+             {
+             "routes":[
+             
+             ],
+             "agency":"Toronto Transit Commission",
+             "uri":"bay_station_concourse",
+             "name":"Bay Station Concourse"
+             },
+             {
+             "routes":[
+             
+             ],
+             "agency":"Toronto Transit Commission",
+             "uri":"bay_station_cumberland_entrance",
+             "name":"Bay Station Cumberland Entrance"
+             },
+             {
+             "routes":[
+             
+             ],
+             "agency":"Toronto Transit Commission",
+             "uri":"bay_station_cumberland_mezzanine",
+             "name":"Bay Station Cumberland Mezzanine"
+             },
+             {
+             "routes":[
+                       {
+                       "stop_times":[
+                                     {
+                                     "shape":"Bloor-Danforth Subway To Kipling Station",
+                                     "departure_timestamp":1463597461,
+                                     "departure_time":"2:51p",
+                                     "service_id":1
+                                     },
+                                     {
+                                     "shape":"Bloor-Danforth Subway To Kennedy Station",
+                                     "departure_timestamp":1463597653,
+                                     "departure_time":"2:54p",
+                                     "service_id":1
+                                     },
+                                     {
+                                     "shape":"Bloor-Danforth Subway To Kipling Station",
+                                     "departure_timestamp":1463597717,
+                                     "departure_time":"2:55p",
+                                     "service_id":1
+                                     },
+                                     {
+                                     "shape":"Bloor-Danforth Subway To Kennedy Station",
+                                     "departure_timestamp":1463597909,
+                                     "departure_time":"2:58p",
+                                     "service_id":1
+                                     },
+                                     {
+                                     "shape":"Bloor-Danforth Subway To Kipling Station",
+                                     "departure_timestamp":1463597973,
+                                     "departure_time":"2:59p",
+                                     "service_id":1
+                                     },
+                                     {  
+                                     "shape":"Bloor-Danforth Subway To Kennedy Station",
+                                     "departure_timestamp":1463598165,
+                                     "departure_time":"3:02p",
+                                     "service_id":1
+                                     }
+                                     ],
+                       "route_group_id":"3",
+                       "uri":"bloor-danforth_subway",
+                       "name":"Bloor-Danforth Subway"
+                       }
+                       ],
+             "agency":"Toronto Transit Commission",
+             "uri":"bay_station_subway_platform",
+             "name":"Bay Station Subway Platform"
+             }
+             ],
+    "uri":"bay_station",
+    "name":"Bay Station"
+}

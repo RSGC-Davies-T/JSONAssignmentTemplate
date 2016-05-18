@@ -3,6 +3,7 @@
 import UIKit
 import XCPlayground
 print("test1")
+
 class ViewController : UIViewController {
    
     // Views that need to be accessible to all methods
@@ -10,6 +11,8 @@ class ViewController : UIViewController {
     var platformCount = 0
     var currentPlatform = 0
     var emptyChecker = 0
+    var vehicleCount = 0
+    var currentVehicle = 0
     // If data is successfully retrieved from the server, we can parse it here
     func parseMyJSON(theData : NSData) {
         
@@ -22,9 +25,6 @@ class ViewController : UIViewController {
         do {
             
             // Do the initial de-serialization
-            // Source JSON is here:
-            // http://www.learnswiftonline.com/Samples/subway.json
-            //
             let json = try NSJSONSerialization.JSONObjectWithData(theData, options: NSJSONReadingOptions.AllowFragments) as? AnyObject
             
             // Print retrieved JSON
@@ -35,17 +35,49 @@ class ViewController : UIViewController {
             // Now we can parse this...
             if let stationPlatforms = json as? [String : AnyObject] {
                platformCount = stationPlatforms["stops"]!.count
-                print(platformCount)
+//                print(platformCount)
                 repeat {
-                print("=========")
-                print(stationPlatforms["stops"]![currentPlatform])
-                print("=========")
+//                print("=========")
+//                print(stationPlatforms["stops"]![currentPlatform])
+//                print("=========")
                 if let vehicles = stationPlatforms["stops"]![currentPlatform] as? [String: AnyObject] {
                      emptyChecker = vehicles["routes"]!.count
                     if emptyChecker != 0 {
                     print("--------")
                     print(vehicles["routes"])
                     print("--------")
+                        
+//                        print(stationPlatforms["stops"]![currentPlatform]["routes"]!!["name"])
+//                        if vehicles["routes"]!["name"] != nil{
+//                    print(vehicles["routes"]!["name"])
+//                        }
+                        if let departures = vehicles["routes"]![0] as? [String: AnyObject] {
+                          repeat {
+                             if let individualVehicles = departures["stop_times"]![currentVehicle] as? [String: AnyObject] {
+                                vehicleCount = departures["stop_times"]!.count
+                                    print("**********")
+                                    print(individualVehicles["shape"])
+                                    print(individualVehicles["departure_time"])
+                                    currentVehicle += 1
+                                    print("**********")
+                              
+                             } else {
+                                print("could not parse individual arrivals")
+                            }
+                              } while currentVehicle < vehicleCount
+//                            print(departure["name"])
+//                            vehicleCount = departure["stop_times"]!.count
+//                            print(vehicleCount)
+//                            repeat {
+//                                print("**********")
+//                                print(departure["shape"])
+//                                print(departure["departure_time"])
+//                                currentVehicle += 1
+//                                print("**********")
+//                            } while currentVehicle < vehicleCount
+                         } else {
+                            print("could not parse expected time")
+                        }
                     } else {
                         print("no route on this line")
                     }
@@ -60,7 +92,7 @@ class ViewController : UIViewController {
             // Now we can update the UI
             // (must be done asynchronously)
             dispatch_async(dispatch_get_main_queue()) {
-                self.jsonResult.text = "hey b0ss"
+                self.jsonResult.text = "ey b0ss"
             }
             
         } catch let error as NSError {
@@ -103,9 +135,7 @@ class ViewController : UIViewController {
                     print("")
                     print("====== errors from the request follows ======")
                     print(error)
-                    
                     if let d = data {
-                        
                         // Parse the retrieved data
                         self.parseMyJSON(d)
                         
@@ -182,7 +212,7 @@ class ViewController : UIViewController {
         getData.addTarget(self, action: #selector(ViewController.getMyJSON), forControlEvents: UIControlEvents.TouchUpInside)
         
         // Set the button's title
-        getData.setTitle("Get my JSON!", forState: UIControlState.Normal)
+        getData.setTitle("Spaghetti", forState: UIControlState.Normal)
         
         // Required to auto layout this button
         getData.translatesAutoresizingMaskIntoConstraints = false
