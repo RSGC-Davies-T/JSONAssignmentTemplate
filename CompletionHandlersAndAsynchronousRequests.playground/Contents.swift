@@ -11,6 +11,8 @@ class ViewController : UIViewController {
     var platformCount = 0
     var currentPlatform = 0
     var emptyChecker = 0
+    var currentRoute = 0
+    var routeCount = 0
     var vehicleCount = 0
     var currentVehicle = 0
     // If data is successfully retrieved from the server, we can parse it here
@@ -29,29 +31,30 @@ class ViewController : UIViewController {
             
             // Print retrieved JSON
             print("")
-            print("====== the retrieved JSON is as follows ======")
-            print(json)
+//            print("====== the retrieved JSON is as follows ======")
+//            print(json)
             
             // Now we can parse this...
             if let stationPlatforms = json as? [String : AnyObject] {
                platformCount = stationPlatforms["stops"]!.count
-//                print(platformCount)
+                print(platformCount)
+                print(currentPlatform)
                 repeat {
-//                print("=========")
-//                print(stationPlatforms["stops"]![currentPlatform])
-//                print("=========")
+                    currentRoute = 0
                 if let vehicles = stationPlatforms["stops"]![currentPlatform] as? [String: AnyObject] {
+                    print("platform is")
+                    print(currentPlatform)
+                    print("total platform is", platformCount)
                      emptyChecker = vehicles["routes"]!.count
                     if emptyChecker != 0 {
-                    print("--------")
-                    print(vehicles["routes"])
-                    print("--------")
-                        
-//                        print(stationPlatforms["stops"]![currentPlatform]["routes"]!!["name"])
-//                        if vehicles["routes"]!["name"] != nil{
-//                    print(vehicles["routes"]!["name"])
-//                        }
-                        if let departures = vehicles["routes"]![0] as? [String: AnyObject] {
+//                    print(emptyChecker)
+//                    print("--------")
+//                    print(vehicles["routes"])
+//                    print("--------")
+                        repeat {
+                        if let departures = vehicles["routes"]![currentRoute] as? [String: AnyObject] {
+                            routeCount = vehicles["routes"]!.count
+                            currentVehicle = 0
                           repeat {
                              if let individualVehicles = departures["stop_times"]![currentVehicle] as? [String: AnyObject] {
                                 vehicleCount = departures["stop_times"]!.count
@@ -65,19 +68,14 @@ class ViewController : UIViewController {
                                 print("could not parse individual arrivals")
                             }
                               } while currentVehicle < vehicleCount
-//                            print(departure["name"])
-//                            vehicleCount = departure["stop_times"]!.count
-//                            print(vehicleCount)
-//                            repeat {
-//                                print("**********")
-//                                print(departure["shape"])
-//                                print(departure["departure_time"])
-//                                currentVehicle += 1
-//                                print("**********")
-//                            } while currentVehicle < vehicleCount
-                         } else {
+                            
+                        } else {
                             print("could not parse expected time")
-                        }
+                            }
+                            currentRoute += 1
+                            } while currentRoute < routeCount
+                            
+                        
                     } else {
                         print("no route on this line")
                     }
@@ -85,6 +83,7 @@ class ViewController : UIViewController {
                     print("Can't parse individual routes")
                     }
                     currentPlatform += 1
+                    
             } while currentPlatform < platformCount
                 } else {
                     print("Can't parse individual platforms")
@@ -148,7 +147,7 @@ class ViewController : UIViewController {
         }
         
         // Define a URL to retrieve a JSON file from
-        let address : String = "https://myttc.ca/Bay_station.json"
+        let address : String = "https://myttc.ca/Coxwell_station.json"
         
         // Try to make a URL request object
         if let url = NSURL(string: address) {
