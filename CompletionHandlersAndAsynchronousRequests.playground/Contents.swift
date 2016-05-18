@@ -7,7 +7,8 @@ class ViewController : UIViewController {
    
     // Views that need to be accessible to all methods
     let jsonResult = UILabel()
-  
+    var platformCount = 0
+    var currentPlatform = 0
     // If data is successfully retrieved from the server, we can parse it here
     func parseMyJSON(theData : NSData) {
         
@@ -32,19 +33,28 @@ class ViewController : UIViewController {
             
             // Now we can parse this...
             if let stationPlatforms = json as? [String : AnyObject] {
+               platformCount = stationPlatforms["stops"]!.count
+                print(platformCount)
+                repeat {
                 print("=========")
-                  print(stationPlatforms["stops"])
+                print(stationPlatforms["stops"]![currentPlatform])
                 print("=========")
-//                if let vehicles = stationPlatforms[] as? [String: AnyObject] {
-//                    print(vehicles["routes"])
-//                } else {
-//                    print("Can't parse individual routes")
-//                }
-
-            } else {
-                print("Can't parse individual platforms")
-            }
-
+                if let vehicles = stationPlatforms["stops"]![currentPlatform] as? [String: AnyObject] {
+                    if vehicles["routes"] != nil {
+                    print("--------")
+                    print(vehicles["routes"])
+                    print("--------")
+                    } else {
+                        print("no route on this line")
+                    }
+                } else {
+                    print("Can't parse individual routes")
+                    }
+                    currentPlatform += 1
+            } while currentPlatform < platformCount
+                } else {
+                    print("Can't parse individual platforms")
+                }
             // Now we can update the UI
             // (must be done asynchronously)
             dispatch_async(dispatch_get_main_queue()) {
