@@ -37,14 +37,9 @@ class ViewController : UIViewController {
             // Now we can parse this...
             if let stationPlatforms = json as? [String : AnyObject] {
                platformCount = stationPlatforms["stops"]!.count
-//                print(platformCount)
-//                print(currentPlatform)
                 repeat {
                     currentRoute = 0
                 if let vehicles = stationPlatforms["stops"]![currentPlatform] as? [String: AnyObject] {
-//                    print("platform is")
-//                    print(currentPlatform)
-//                    print("total platform is", platformCount)
                      emptyChecker = vehicles["routes"]!.count
                     if emptyChecker != 0 {
                         repeat {
@@ -58,7 +53,6 @@ class ViewController : UIViewController {
                                     print(individualVehicles["shape"])
                                     print(individualVehicles["departure_time"])
                                     currentVehicle += 1
-//                                    print("**********")
                               
                              } else {
                                 print("could not parse individual arrivals")
@@ -143,7 +137,7 @@ class ViewController : UIViewController {
         }
         
         // Define a URL to retrieve a JSON file from
-        let address : String = "https://myttc.ca/Bathurst_station.json"
+        let address : String = "https://myttc.ca/ossington_station.json"
         
         // Try to make a URL request object
         if let url = NSURL(string: address) {
